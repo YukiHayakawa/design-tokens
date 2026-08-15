@@ -1,0 +1,49 @@
+{
+  "id": "ocean",
+  "label": "Ocean",
+  "swatches": ["#2387b5", "#e27d6c", "#d4aa4d"],
+  "modes": {
+    "light": {
+      "ink": "#17384a",
+      "muted": "#607d8e",
+      "primary": "#2387b5",
+      "secondary": "#e27d6c",
+      "accent": "#d4aa4d",
+      "line": "#bdd9e5",
+      "page": "#f2f9fb",
+      "surface": "#ffffff",
+      "border": "#d4e7ed",
+      "on-primary": "#ffffff",
+      "on-media": "#ffffff",
+      "overlay": "#17384a",
+      "shadow": "#17384a",
+      "media-start": "#d8eef6",
+      "media-end": "#d9ede5",
+      "surface-subtle": "#f1f7f9",
+      "border-subtle": "#bed6df",
+      "status-danger": "#ce5a5a",
+      "status-muted": "#697d88"
+    },
+    "dark": {
+      "ink": "#e4f3f7",
+      "muted": "#abc3cc",
+      "primary": "#5eb4d5",
+      "secondary": "#ef9b8d",
+      "accent": "#e2ba63",
+      "line": "#4b6b78",
+      "page": "#0d1b22",
+      "surface": "#172b35",
+      "border": "#34505c",
+      "on-primary": "#ffffff",
+      "on-media": "#ffffff",
+      "overlay": "#e4f3f7",
+      "shadow": "#000000",
+      "media-start": "#245064",
+      "media-end": "#375448",
+      "surface-subtle": "#203640",
+      "border-subtle": "#5b7580",
+      "status-danger": "#f1847c",
+      "status-muted": "#b1c4cb"
+    }
+  }
+}

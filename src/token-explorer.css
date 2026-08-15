@@ -1,0 +1,185 @@
+.tokenExplorerCanvas {
+  min-height: 100vh;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+.tokenExplorerCanvas * {
+  box-sizing: border-box;
+}
+
+.tokenExplorer {
+  width: min(100% - 40px, 1120px);
+  margin: 0 auto;
+  padding: 56px 0 80px;
+}
+
+.tokenExplorerHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tokenExplorerEyebrow,
+.tokenSample p {
+  margin: 0;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tokenExplorerHeader h1 {
+  margin: 5px 0 0;
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.tokenExplorerMode {
+  padding: 6px 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-subtle);
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.tokenExplorerSwatches {
+  display: flex;
+  gap: 8px;
+  padding: 20px 0 28px;
+}
+
+.tokenExplorerSwatches span {
+  width: 42px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.tokenExplorerSamples {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tokenSample {
+  min-height: 190px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.tokenSample h2 {
+  margin: 10px 0 7px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.tokenSample span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tokenSampleSurface {
+  background: var(--surface);
+}
+
+.tokenSamplePrimary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.tokenSamplePrimary p,
+.tokenSamplePrimary span {
+  color: color-mix(in srgb, var(--on-primary) 80%, transparent);
+}
+
+.tokenSamplePrimary button {
+  display: block;
+  margin-top: 18px;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--on-primary) 60%, transparent);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--on-primary);
+  font: inherit;
+  font-size: 12px;
+}
+
+.tokenSampleMedia {
+  border-color: var(--overlay);
+  background: linear-gradient(145deg, var(--media-start), var(--media-end));
+  box-shadow: inset 0 -108px 70px color-mix(in srgb, var(--overlay) 88%, transparent);
+  color: var(--on-media);
+}
+
+.tokenSampleMedia p,
+.tokenSampleMedia span {
+  color: color-mix(in srgb, var(--on-media) 80%, transparent);
+}
+
+.tokenExplorerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 8px;
+  margin-top: 36px;
+}
+
+.tokenItem {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 3px 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.tokenItemSwatch {
+  grid-row: span 2;
+  width: 28px;
+  height: 28px;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border-radius: 3px;
+}
+
+.tokenItem code,
+.tokenItem output {
+  overflow: hidden;
+  color: var(--ink);
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tokenItem output {
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .tokenExplorer {
+    width: min(100% - 28px, 1120px);
+    padding: 32px 0 48px;
+  }
+
+  .tokenExplorerHeader {
+    align-items: start;
+  }
+
+  .tokenExplorerHeader h1 {
+    font-size: 34px;
+  }
+
+  .tokenExplorerSamples {
+    grid-template-columns: 1fr;
+  }
+}
