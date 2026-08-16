@@ -60,7 +60,7 @@ pnpm add @<GitHub owner>/design-tokens
 追加後は、利用アプリのグローバル CSS またはルートレイアウトで CSS を一度読み込みます。
 
 ```ts
-import "@<GitHub owner>/design-tokens/tokens.css";
+import '@<GitHub owner>/design-tokens/tokens.css';
 ```
 
 CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を設定します。トークン値をリポジトリへ記録せず、CI のシークレットまたは GitHub Actions の `GITHUB_TOKEN` として渡します。
@@ -105,11 +105,15 @@ CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を�
 生成 CSS を読み込んだ利用側では、テーマを適用するルート要素に属性を設定します。
 
 ```tsx
-import "<テーマパッケージ名>/tokens.css";
+import '<テーマパッケージ名>/tokens.css';
 
-export function RootLayout({ children }: { children: React.ReactNode }) {
+export function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html data-theme-base="light" data-theme-color="ocean">
+    <html data-theme-base='light' data-theme-color='ocean'>
       <body>{children}</body>
     </html>
   );
@@ -120,10 +124,11 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 
 ```css
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--ink);
-  box-shadow: 0 12px 32px color-mix(in srgb, var(--shadow) 12%, transparent);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  box-shadow: 0 12px 32px
+    color-mix(in srgb, var(--color-shadow) 12%, transparent);
 }
 ```
 
@@ -135,11 +140,14 @@ import {
   themeOptions,
   type ThemeId,
   type ThemeMode,
-} from "@<GitHub owner>/design-tokens/themes";
+} from '@<GitHub owner>/design-tokens/themes';
 
 const options = themeOptions;
 
-function getPrimaryColor(themeId: ThemeId, mode: ThemeMode) {
+function getPrimaryColor(
+  themeId: ThemeId,
+  mode: ThemeMode
+) {
   return getThemeTokens(themeId, mode).primary;
 }
 ```
