@@ -167,9 +167,17 @@ function getPrimaryColor(
 テーマを変更したら、次の順で公開します。
 
 1. テーマ JSON を編集し、`pnpm build` と `pnpm storybook` で生成物と表示を確認する。
-2. `package.json` の `version` を更新する。
+2. `package.json` の `version` を更新する。CSS 変数名の変更など利用側の修正が必要な変更は、メジャーバージョンを更新する。
 3. `pnpm pack` を実行し、アーカイブに `dist/tokens.css`、`dist/themes.js`、`dist/themes.d.ts`、`dist/themes.json` が含まれることを確認する。
 4. `pnpm publish` で GitHub Packages へ公開する。
-5. 利用アプリで公開名の依存バージョンを更新する。
+5. `pnpm view @<GitHub owner>/design-tokens@<version> version --registry=https://npm.pkg.github.com` で公開済みバージョンを確認する。
+6. 公開したバージョンと同じ `v<version>` の注釈付きタグを作成して push する。
+
+```sh
+git tag -a v<version> -m "v<version>"
+git push origin v<version>
+```
+
+7. 利用アプリで公開名の依存バージョンを更新する。
 
 利用アプリは、公開済みのバージョンを更新してテーマの変更を取り込みます。CSS import と TypeScript import の名前は、公開時の `package.json` の `name` に合わせます。
