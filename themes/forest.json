@@ -22,7 +22,8 @@
       "surface-subtle": "#f7f2e8",
       "border-subtle": "#d2c69e",
       "status-danger": "#c95850",
-      "status-muted": "#687b71"
+      "status-muted": "#687b71",
+      "status-warning": "#a8721f"
     },
     "dark": {
       "ink": "#eaf3ee",
@@ -43,7 +44,8 @@
       "surface-subtle": "#243029",
       "border-subtle": "#5c6d58",
       "status-danger": "#f07a6e",
-      "status-muted": "#b1c2b8"
+      "status-muted": "#b1c2b8",
+      "status-warning": "#d9a256"
     }
   }
 }
