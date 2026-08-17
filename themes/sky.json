@@ -23,7 +23,8 @@
       "border-subtle": "#d8c9a8",
       "status-danger": "#e5484d",
       "status-muted": "#6b7280",
-      "status-warning": "#c77b12"
+      "status-warning": "#c77b12",
+      "status-success": "#2f9455"
     },
     "dark": {
       "ink": "#e6f2f7",
@@ -45,7 +46,8 @@
       "border-subtle": "#5e7180",
       "status-danger": "#ff7a7f",
       "status-muted": "#aab5bf",
-      "status-warning": "#e0a83f"
+      "status-warning": "#e0a83f",
+      "status-success": "#5ecc8a"
     }
   }
 }
