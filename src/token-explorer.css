@@ -1,7 +1,7 @@
 .tokenExplorerCanvas {
   min-height: 100vh;
-  background: var(--page);
-  color: var(--ink);
+  background: var(--color-page);
+  color: var(--color-ink);
   font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 }
 
@@ -21,13 +21,13 @@
   justify-content: space-between;
   gap: 24px;
   padding-bottom: 22px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tokenExplorerEyebrow,
 .tokenSample p {
   margin: 0;
-  color: var(--primary);
+  color: var(--color-ink);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -42,9 +42,9 @@
 
 .tokenExplorerMode {
   padding: 6px 10px;
-  border: 1px solid var(--border-subtle);
-  background: var(--surface-subtle);
-  color: var(--muted);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-subtle);
+  color: var(--color-ink);
   font-family: ui-monospace, monospace;
   font-size: 12px;
 }
@@ -70,7 +70,7 @@
 .tokenSample {
   min-height: 190px;
   padding: 20px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
   border-radius: 6px;
 }
 
@@ -81,47 +81,47 @@
 }
 
 .tokenSample span {
-  color: var(--muted);
+  color: var(--color-ink);
   font-size: 12px;
 }
 
 .tokenSampleSurface {
-  background: var(--surface);
+  background: var(--color-surface);
 }
 
 .tokenSamplePrimary {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: var(--on-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
 }
 
 .tokenSamplePrimary p,
 .tokenSamplePrimary span {
-  color: color-mix(in srgb, var(--on-primary) 80%, transparent);
+  color: var(--color-on-primary);
 }
 
 .tokenSamplePrimary button {
   display: block;
   margin-top: 18px;
   padding: 8px 10px;
-  border: 1px solid color-mix(in srgb, var(--on-primary) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-on-primary) 60%, transparent);
   border-radius: 4px;
   background: transparent;
-  color: var(--on-primary);
+  color: var(--color-on-primary);
   font: inherit;
   font-size: 12px;
 }
 
 .tokenSampleMedia {
-  border-color: var(--overlay);
-  background: linear-gradient(145deg, var(--media-start), var(--media-end));
-  box-shadow: inset 0 -108px 70px color-mix(in srgb, var(--overlay) 88%, transparent);
-  color: var(--on-media);
+  border-color: var(--color-overlay);
+  background: linear-gradient(145deg, var(--color-media-start), var(--color-media-end));
+  box-shadow: inset 0 -108px 70px color-mix(in srgb, var(--color-overlay) 88%, transparent);
+  color: var(--color-on-media);
 }
 
 .tokenSampleMedia p,
 .tokenSampleMedia span {
-  color: color-mix(in srgb, var(--on-media) 80%, transparent);
+  color: color-mix(in srgb, var(--color-on-media) 80%, transparent);
 }
 
 .tokenExplorerGrid {
@@ -138,23 +138,23 @@
   align-items: center;
   min-height: 58px;
   padding: 9px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  background: var(--surface);
+  background: var(--color-surface);
 }
 
 .tokenItemSwatch {
   grid-row: span 2;
   width: 28px;
   height: 28px;
-  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
   border-radius: 3px;
 }
 
 .tokenItem code,
 .tokenItem output {
   overflow: hidden;
-  color: var(--ink);
+  color: var(--color-ink);
   font-family: ui-monospace, monospace;
   font-size: 11px;
   text-overflow: ellipsis;
@@ -162,8 +162,21 @@
 }
 
 .tokenItem output {
-  color: var(--muted);
+  color: var(--color-ink);
 }
+
+.tokenActionGrid { margin: 32px 0; }
+.tokenActionRow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--color-border); }
+.tokenActionRow h2 { grid-column: 1 / -1; margin: 0; font-size: 20px; }
+.tokenActionCell h3 { margin: 0 0 12px; font-size: 14px; font-weight: 500; }
+.tokenActionSample, .tokenActionButton { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 16px; border: 1px solid transparent; border-radius: 8px; font: inherit; font-size: 16px; font-weight: 500; line-height: 1.5; }
+.tokenActionButton { cursor: pointer; background: var(--action-face); color: var(--action-text); }
+.tokenActionButton[data-action-role="primary"] { --action-face: var(--color-primary); --action-hover: var(--color-primary-hover); --action-pressed: var(--color-primary-pressed); --action-text: var(--color-on-primary); }
+.tokenActionButton[data-action-role="secondary"] { --action-face: var(--color-secondary); --action-hover: var(--color-secondary-hover); --action-pressed: var(--color-secondary-pressed); --action-text: var(--color-on-secondary); }
+.tokenActionButton[data-action-role="status-danger"] { --action-face: var(--color-status-danger); --action-hover: var(--color-status-danger-hover); --action-pressed: var(--color-status-danger-pressed); --action-text: var(--color-on-status-danger); }
+.tokenActionButton:hover { background: var(--action-hover); }
+.tokenActionButton:active { background: var(--action-pressed); }
+.tokenActionButton:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 3px; }
 
 @media (max-width: 720px) {
   .tokenExplorer {
@@ -182,4 +195,5 @@
   .tokenExplorerSamples {
     grid-template-columns: 1fr;
   }
+  .tokenActionRow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

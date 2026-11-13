@@ -85,7 +85,7 @@ CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を�
 }
 ```
 
-実際には、各モードに既存テーマと**同じ全トークン**を定義します。新しいテーマを追加したら `pnpm theme:build` を実行します。生成スクリプトが新しい JSON を自動検出するため、CSS、アプリのテーマ選択、Storybook の選択肢へ個別にテーマ名を追加する必要はありません。
+実際には、各モードに既存テーマと**同じ全トークン**を定義します。新しいテーマを追加したら `pnpm build` を実行します。生成スクリプトが新しい JSON を自動検出するため、CSS、アプリのテーマ選択、Storybook の選択肢へ個別にテーマ名を追加する必要はありません。
 
 ## トークンの方針
 
@@ -95,12 +95,32 @@ CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を�
 | ------------------ | ------------------------------------------------------------------------- |
 | 基本の文字・面     | `ink`, `muted`, `page`, `surface`, `surface-subtle`                       |
 | 強調・境界         | `primary`, `secondary`, `accent`, `line`, `border`, `border-subtle`       |
-| 反転表示・メディア | `on-primary`, `on-media`, `overlay`, `shadow`, `media-start`, `media-end` |
-| 状態表示           | `status-danger`, `status-muted`                                           |
+| 反転表示・メディア | `on-primary`, `on-secondary`, `on-status-danger`, `on-media`, `overlay`, `shadow`, `media-start`, `media-end` |
+| 状態表示           | `status-danger`, `status-muted`, `status-success`, `status-warning` |
+| 操作状態           | `primary-hover`, `primary-pressed`, `secondary-hover`, `secondary-pressed`, `status-danger-hover`, `status-danger-pressed` |
 
 新しいトークンを追加する場合は、すべてのテーマの `light` と `dark` に同名の値を追加します。値は `#rgb`、`#rrggbb`、またはアルファ付きの 4 / 8 桁 HEX で定義します。トークン名や値が不足・重複・不正な場合、ビルドは失敗します。
 
 ## テーマの適用
+
+無指定のルートはGUIプレビューの既定と同じSky／Lightを使用します（Skyが存在しない場合はファイル名順で最初のテーマのLight）。`data-theme-base`と`data-theme-color`を明示すると、ルート要素でも子要素でも指定したテーマだけが適用されます。両属性は組にして設定します。入れ子の指定はその領域だけに適用されます。
+
+### 塗り面の操作色
+
+`primary`、`secondary`、`status-danger`は塗り面として使用でき、それぞれ`on-primary`、`on-secondary`、`on-status-danger`を文字・単色Iconの色として組にします。全Theme・Light／Darkで`on-*`は白（`#ffffff`）とし、白い文字で4.5:1以上になるよう面の色を暗くしています。Hover／Pressedは、Defaultの面からRGBの各値を8／16下げた色です。Default／Hover／Pressedの面は同じ`on-*`と組にし、通常サイズの文字に対して4.5:1以上のContrastを検証します。状態名は面の役割名に`-hover`／`-pressed`を付けます。
+
+```css
+.primary-action {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.primary-action:hover { background: var(--color-primary-hover); }
+.primary-action:active { background: var(--color-primary-pressed); }
+```
+
+利用アプリは独自のHEX、透明度、`brightness`でこの組を補正しません。Loadingは通常の面と文字の組を保ちます。DisabledやFocusのComponent全体の規則は利用側で検証する対象であり、このPackageが完成したアプリButtonを提供するものではありません。
+
+`pnpm test`で生成と操作色のContrast・CSSセレクタを検証します。Storybookの`Design Tokens / Explorer / Actions`では、状態色の比較と実際のHover／押下／Focusを確認できます。サンプルボタンは業務処理を実行しません。
 
 生成 CSS を読み込んだ利用側では、テーマを適用するルート要素に属性を設定します。
 
