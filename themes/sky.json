@@ -1,6 +1,13 @@
 {
   "id": "sky",
   "label": "Sky",
+  "labels": {
+    "ja": "空の水色",
+    "en": "Sky blue",
+    "es": "Azul cielo",
+    "ko": "하늘색",
+    "zh-Hant": "天藍色"
+  },
   "swatches": ["#1d79b7", "#e21e58", "#eeb235"],
   "modes": {
     "light": {

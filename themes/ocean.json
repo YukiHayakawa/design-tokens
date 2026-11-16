@@ -1,6 +1,13 @@
 {
   "id": "ocean",
   "label": "Ocean",
+  "labels": {
+    "ja": "海の青",
+    "en": "Ocean blue",
+    "es": "Azul océano",
+    "ko": "바다의 파랑",
+    "zh-Hant": "海洋藍"
+  },
   "swatches": ["#217da8", "#d14129", "#d4aa4d"],
   "modes": {
     "light": {

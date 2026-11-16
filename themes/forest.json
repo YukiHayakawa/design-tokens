@@ -1,6 +1,13 @@
 {
   "id": "forest",
   "label": "Forest",
+  "labels": {
+    "ja": "森の緑",
+    "en": "Forest green",
+    "es": "Verde bosque",
+    "ko": "숲의 초록",
+    "zh-Hant": "森林綠"
+  },
   "swatches": ["#45806d", "#b55b2c", "#a8a45d"],
   "modes": {
     "light": {

@@ -73,6 +73,13 @@ CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を�
 {
   "id": "ocean",
   "label": "Ocean",
+  "labels": {
+    "ja": "海の青",
+    "en": "Ocean blue",
+    "es": "Azul océano",
+    "ko": "바다의 파랑",
+    "zh-Hant": "海洋藍"
+  },
   "swatches": ["#2387b5", "#e27d6c", "#d4aa4d"],
   "modes": {
     "light": {
@@ -85,7 +92,7 @@ CI では GitHub Packages の読み取り権限を持つ `NODE_AUTH_TOKEN` を�
 }
 ```
 
-実際には、各モードに既存テーマと**同じ全トークン**を定義します。新しいテーマを追加したら `pnpm build` を実行します。生成スクリプトが新しい JSON を自動検出するため、CSS、アプリのテーマ選択、Storybook の選択肢へ個別にテーマ名を追加する必要はありません。
+実際には、各モードに既存テーマと**同じ全トークン**を定義し、`labels` には 5 言語の名前を定義します（「テーマの名前（labels）」を参照）。新しいテーマを追加したら `pnpm build` を実行します。生成スクリプトが新しい JSON を自動検出するため、CSS、アプリのテーマ選択、Storybook の選択肢へ個別にテーマ名を追加する必要はありません。
 
 ## トークンの方針
 
@@ -169,6 +176,27 @@ function getPrimaryColor(
   mode: ThemeMode
 ) {
   return getThemeTokens(themeId, mode).primary;
+}
+```
+
+### テーマの名前（labels）
+
+各テーマは `labels` に言語ごとの名前を持ちます。テーマ選択 UI で色の見本だけを表示する場合、読み上げる名前（アクセシブルな名前）として使います。名前は色が分かる言い方にします（例：`森の緑`、`Forest green`）。
+
+対象の言語は `themeLabelLocales`（`ja`、`en`、`es`、`ko`、`zh-Hant`）です。テーマを追加するときは 5 言語すべての名前を定義します。不足、余分な言語、空文字、`要翻訳` などの仮の文字が残っている場合、ビルドは失敗します。`label` は互換のために残している英語の短い名前で、画面や読み上げの文言には `labels` を使います。
+
+```tsx
+import {
+  themeOptions,
+  type ThemeLabelLocale,
+} from '@<GitHub owner>/design-tokens/themes';
+
+function ThemeSwatchButtons({ locale }: { locale: ThemeLabelLocale }) {
+  return themeOptions.map((option) => (
+    <button key={option.id} type="button" aria-label={option.labels[locale]}>
+      {/* option.swatches で色の見本を描画する */}
+    </button>
+  ));
 }
 ```
 

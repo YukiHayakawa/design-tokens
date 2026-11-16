@@ -1,6 +1,13 @@
 {
   "id": "rose",
   "label": "Rose",
+  "labels": {
+    "ja": "ばら色",
+    "en": "Rose pink",
+    "es": "Rosa",
+    "ko": "장밋빛 분홍",
+    "zh-Hant": "玫瑰粉"
+  },
   "swatches": ["#cf3e6c", "#7f65c2", "#d89372"],
   "modes": {
     "light": {

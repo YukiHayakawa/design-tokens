@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
-import { getThemeTokens, themes } from '../dist/themes.js';
+import { getThemeTokens, themeLabelLocales, themeOptions, themes } from '../dist/themes.js';
 
 function luminance(hex) {
   const rgb = [1, 3, 5].map((offset) => parseInt(hex.slice(offset, offset + 2), 16) / 255);
@@ -19,6 +19,18 @@ test('explicit theme selectors do not match every root', async () => {
   const css = await readFile(new URL('../dist/tokens.css', import.meta.url), 'utf8');
   assert.equal(css.includes(':where(:root,'), false);
   assert.ok(css.includes(':root:not([data-theme-base]):not([data-theme-color])'));
+});
+
+test('theme options and manifest expose labels for every locale', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../dist/themes.json', import.meta.url), 'utf8'));
+  assert.deepEqual(themeLabelLocales, ['ja', 'en', 'es', 'ko', 'zh-Hant']);
+  assert.deepEqual(manifest.themes, themeOptions);
+  for (const option of themeOptions) {
+    assert.deepEqual(Object.keys(option.labels).sort(), [...themeLabelLocales].sort());
+    for (const locale of themeLabelLocales) {
+      assert.ok(option.labels[locale].trim().length > 0, `${option.id} needs a ${locale} label`);
+    }
+  }
 });
 
 for (const theme of themes) {
